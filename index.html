@@ -3,122 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Notícias - Bastidores dos Influenciadores</title>
+    <title>Trend Alert: Karol Rosalin • Hot & Glam</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
-            color: #333;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+
+        /* Barra de Topo Moderna e Feminina */
+        .header {
+            background-color: white;
+            padding: 15px 25px;
             display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid #ff4a88; /* Linha Rosa de Acento */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e1e8ed;
-            padding: 15px 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
+
         .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: #e1306c;
-            letter-spacing: 1px;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: #333;
         }
-        main {
-            flex: 1;
+
+        .logo span {
+            color: #ff4a88;
+        }
+
+        /* Container Principal */
+        .container {
             max-width: 500px;
-            margin: 30px auto;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            padding: 25px;
-            text-align: center;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+            padding-bottom: 50px;
         }
-        .profile-badge {
-            background-color: #fff0f5;
-            color: #d63384;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
+
+        /* Hero Section com a Modelo (Acento Visual) */
+        .hero-accent {
+            background: linear-gradient(135deg, #ff4a88 0%, #b21fbf 100%);
+            height: 120px;
+            position: relative;
+            margin-bottom: -60px; /* Sobrepõe com o conteúdo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
             font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Conteúdo da Matéria */
+        .content {
+            padding: 25px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .status-badge {
+            background-color: #ffdce8;
+            color: #ff4a88;
             display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
             margin-bottom: 15px;
+            margin-top: 60px; /* Compensa o hero-accent */
         }
+
         h1 {
-            font-size: 22px;
-            color: #111;
-            line-height: 1.4;
-            margin-bottom: 15px;
+            font-size: 26px;
+            line-height: 1.1;
+            font-weight: 800;
+            color: #222;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
         }
-        p {
-            font-size: 15px;
-            color: #666;
-            line-height: 1.6;
+
+        .author {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .author-avatar {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #ff4a88;
+            margin-right: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
             margin-bottom: 25px;
         }
-        .btn-redirect {
-            display: block;
-            background: linear-gradient(135deg, #e1306c 0%, #c13584 100%);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(225, 48, 108, 0.3);
-            transition: transform 0.2s;
-        }
-        .btn-redirect:active {
-            transform: scale(0.98);
-        }
-        .notice {
-            font-size: 11px;
-            color: #999;
-            margin-top: 15px;
-        }
-        footer {
-            background-color: #ffffff;
-            border-top: 1px solid #e1e8ed;
+
+        /* Caixa de Alerta de Tendência */
+        .alert-box {
+            background-color: #f7f3ff;
+            border: 2px dashed #b21fbf;
+            color: #7d0da1;
             padding: 20px;
-            text-align: center;
-            font-size: 12px;
-            color: #777;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
         }
-        footer a {
-            color: #666;
-            text-decoration: underline;
-            margin: 0 10px;
+
+        .alert-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #b21fbf;
+        }
+
+        /* Botão de Ação "Glamour" e Pulsante */
+        .cta-wrapper {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            width: 100%;
+            background: linear-gradient(135deg, #ff4a88 0%, #ff1f51 100%);
+            color: white;
+            text-decoration: none;
+            padding: 20px 25px;
+            font-size: 19px;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(255, 74, 136, 0.4);
+            animation: glamPulse 2s infinite;
+            transition: all 0.2s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-cta:active {
+            transform: scale(0.97);
+            box-shadow: 0 6px 10px rgba(255, 74, 136, 0.3);
+        }
+
+        @keyframes glamPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 10px 20px rgba(255, 74, 136, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 30px rgba(255, 74, 136, 0.6);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 10px 20px rgba(255, 74, 136, 0.4);
+            }
+        }
+
+        /* Rodapé com Selos de Confiança (Simulados) */
+        .footer {
+            border-top: 1px solid #eee;
+            padding-top: 25px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 11px;
+            color: #aaa;
+        }
+
+        .seals {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            color: #ccc;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">✦ DIÁRIO DOS FAMOSOS</div>
-    </header>
-
-    <main>
-        <span class="profile-badge">PERFIL VERIFICADO</span>
-        
-        <h1>Karol Rosalin atualiza sua comunidade e libera acesso ao conteúdo diário</h1>
-        
-        <p>A criadora de conteúdo anunciou em suas redes que centralizou suas novas publicações, interações diárias e atualizações exclusivas em um canal oficial.</p>
-
-        <a href="https://t.me/Karol_Rosalinn_Bot" class="btn-redirect">Acessar Canal Oficial Continuar ➔</a>
-        
-        <div class="notice">Você será redirecionado para o aplicativo associado.</div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Diário dos Famosos Notícias LTDA.</p>
-        <div>
-            <a href="https://t.me/Karol_Rosalinn_Bot">Políticas de Privacidade</a> | <a href="#">Termos de Uso</a> | <a href="#">Contato</a>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Hot<span>&</span>Glam</div>
         </div>
-    </footer>
+
+        <div class="hero-accent">
+            EXCLUSIVO • MODA • BEAUTY • TENDÊNCIAS
+        </div>
+
+        <div class="content">
+            <div class="status-badge">Hot Topic • Esta Semana</div>
+            <h1>Karol Rosalin: Saiba como a musa da web está inspirando milhares de novos seguidores</h1>
+            
+            <div class="author">
+                <div class="author-avatar">J</div>
+                Por Juliana Dias • Atualizado hoje às 14:35
+            </div>
+
+            <p class="intro-text">
+                O fenômeno das redes sociais não para de crescer! Karol Rosalin é o nome que está dominando os feeds com seu carisma e atualizações frequentes. Descubra as novidades que todos estão comentando e acesse a comunidade para acompanhar o conteúdo oficial de perto.
+            </p>
+
+            <div class="alert-box">
+                <div class="alert-icon">✨</div>
+                <div>
+                    <strong>FIQUE POR DENTRO:</strong> O canal oficial de comunicados é onde todas as tendências são postadas primeiro. Acesse agora para não perder nenhuma novidade exclusiva.
+                </div>
+            </div>
+
+            <div class="cta-wrapper">
+                <a href="https://t.me/Karol_Rosalinn_Bot" class="btn-cta" target="_blank">
+                    ENTRAR NO CANAL OFICIAL NO TELEGRAM
+                </a>
+            </div>
+
+            <div class="footer">
+                <div class="seals">
+                    <span>⚡ Rápido</span> • <span>🔒 Seguro</span> • <span>✨ Oficial</span>
+                </div>
+                <span>© 2026 Hot&Glam Media. Conteúdo informativo e de entretenimento.</span>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
