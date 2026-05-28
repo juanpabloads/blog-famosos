@@ -11,7 +11,7 @@
   body {
     min-height: 100vh;
     width: 100%;
-    overflow-y: auto;
+    overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
     background: #111;
   }
@@ -24,6 +24,7 @@
     background-position: center 15%;
     transform: scale(1.05);
     z-index: 0;
+    filter: blur(6px);
   }
   .bg-overlay {
     position: fixed;
@@ -40,11 +41,34 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.5rem 1.2rem;
+    justify-content: flex-end;
+    padding: 1.5rem 1.5rem 2.5rem;
   }
  
-  /* TOPO */
+  .middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 360px;
+  }
+ 
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+ 
   .top-badge {
     display: inline-flex;
     align-items: center;
@@ -58,6 +82,7 @@
     font-weight: 600;
     letter-spacing: 0.08em;
     color: #fff;
+    margin-top: 10px;
   }
   .ping-wrap { position: relative; width: 8px; height: 8px; flex-shrink: 0; }
   .ping-ring {
@@ -78,32 +103,6 @@
   }
   .sep { color: rgba(255,255,255,0.3); }
  
-  /* MEIO */
-  .middle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 360px;
-  }
- 
-  h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.2rem;
-    font-weight: 400;
-    font-style: italic;
-    color: #fff;
-    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-    letter-spacing: 0.02em;
-    line-height: 1.1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 0;
-  }
- 
   .subtitle {
     margin-top: 12px;
     font-size: 14px;
@@ -114,7 +113,7 @@
   }
  
   .btn-access {
-    margin-top: 0.8rem;
+    margin-top: 1.6rem;
     width: 100%;
     border: none;
     border-radius: 18px;
@@ -125,7 +124,7 @@
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 14px 24px;
+    padding: 17px 24px;
     cursor: pointer;
     box-shadow: 0 8px 32px rgba(249,115,22,0.5);
     animation: pulse-btn 2s ease-in-out infinite;
@@ -149,9 +148,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    width: 100%;
-    max-width: 280px;
+    gap: 8px;
+    margin-top: 1.2rem;
   }
   .timer-blocks {
     display: flex;
@@ -166,8 +164,8 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 14px;
-    padding: 8px 12px;
-    min-width: 52px;
+    padding: 10px 14px;
+    min-width: 58px;
   }
   .timer-value {
     font-size: 1.1rem;
@@ -205,14 +203,11 @@
 <div class="bg-overlay"></div>
  
 <div class="page">
- 
-  <!-- TOPO -->
-  <div style="height:1rem"></div>
- 
-  <!-- MEIO -->
   <div class="middle">
+ 
     <h1>Karol Rosalin <span style="font-style:normal;font-size:1.8rem;line-height:1;display:inline-block;transform:translateY(4px);">💋</span></h1>
-    <div class="top-badge" style="margin-top:8px;margin-bottom:2px;">
+ 
+    <div class="top-badge">
       <div class="ping-wrap">
         <div class="ping-ring"></div>
         <div class="ping-dot"></div>
@@ -222,14 +217,13 @@
       🤩 Conteúdo exclusivo
     </div>
  
-    <p class="subtitle" style="margin-top:6px;">A melhor parte fica aqui 🔥 👇</p>
+    <p class="subtitle">A melhor parte fica aqui 🔥 👇</p>
  
     <a class="btn-access" id="btn" href="javascript:void(0)" onclick="handleAccess()">
       ✨ Acessar Conteúdo Oficial →
     </a>
  
-    <!-- TIMER -->
-    <div class="timer-wrap" style="margin-top:1rem;">
+    <div class="timer-wrap">
       <div class="timer-blocks">
         <div class="timer-block">
           <span class="timer-value" id="hrs">00</span>
@@ -250,7 +244,6 @@
     </div>
  
   </div>
- 
 </div>
  
 <script>
@@ -266,7 +259,6 @@
     setTimeout(function () { window.location.href = targetUrl; }, 400);
   }
  
-  // Timer regressivo
   var total = 120;
   function updateTimer() {
     if (total <= 0) { total = 0; }
@@ -282,4 +274,3 @@
 </script>
 </body>
 </html>
- 
