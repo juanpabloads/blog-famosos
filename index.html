@@ -143,11 +143,15 @@
   }
  
   .timer-wrap {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    margin-top: 1.2rem;
+    z-index: 20;
   }
   .timer-blocks {
     display: flex;
