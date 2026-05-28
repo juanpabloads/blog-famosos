@@ -24,7 +24,6 @@
     background-position: center 15%;
     transform: scale(1.05);
     z-index: 0;
-    filter: blur(6px);
   }
   .bg-overlay {
     position: fixed;
@@ -41,8 +40,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
-    padding: 1.5rem 1.5rem 2.5rem;
+    justify-content: center;
+    padding: 1.5rem;
   }
  
   .middle {
@@ -135,15 +134,14 @@
     gap: 8px;
     text-decoration: none;
   }
-  .btn-access:active   { transform: scale(0.97); }
-  .btn-access.clicked  { opacity: 0.75; pointer-events: none; animation: none; }
+  .btn-access:active  { transform: scale(0.97); }
+  .btn-access.clicked { opacity: 0.75; pointer-events: none; animation: none; }
  
   @keyframes pulse-btn {
     0%, 100% { box-shadow: 0 8px 32px rgba(249,115,22,0.5); }
     50%       { box-shadow: 0 8px 52px rgba(249,115,22,0.85); }
   }
  
-  /* TIMER */
   .timer-wrap {
     display: flex;
     flex-direction: column;
@@ -171,7 +169,6 @@
     font-size: 1.1rem;
     font-weight: 800;
     color: #fff;
-    letter-spacing: 0.02em;
     line-height: 1;
   }
   .timer-label {
@@ -193,7 +190,6 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.65);
-    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
   }
 </style>
 </head>
@@ -261,7 +257,6 @@
  
   var total = 120;
   function updateTimer() {
-    if (total <= 0) { total = 0; }
     var h = Math.floor(total / 3600);
     var m = Math.floor((total % 3600) / 60);
     var s = total % 60;
